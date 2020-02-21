@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 // app.get('/express_backend', (req, res) => {
 //      res.send({express: 'what'});
 // });
-import Map from '../utils/Map';
+import Map from './utils/Map';
 
 class Server {
     constructor() {

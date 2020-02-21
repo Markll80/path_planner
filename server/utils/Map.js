@@ -18,11 +18,12 @@ class Map {
         // console.log(typeof(row));
         // console.log(row);
         const grid = this.grid;
-        for (var i = 0; i < grid.length; i++) {
-            grid[i] = new Array(col);
-        }
+        // for (var i = 0; i < grid.length; i++) {
+        //     grid[i] = new Array(col);
+        // }
 
         for (var i = 0; i < grid.length; i++) {
+            grid[i] = new Array(col);
             for (var j = 0; j < grid[0].length; j++) {
                 // console.log('??');
                 grid[i][j] = new Node(i, j);
@@ -74,15 +75,16 @@ class Map {
     // }
 
     findPath = (start) => {
-        console.log(start);
+        // console.log(start);
         var curr = this.grid[start[0]][start[1]];
         // console.log(curr);
         // console.log(this.grid);
         const goal = this.grid[this.end[0]][this.end[1]]
 
         while(curr !== goal) {
+            // console.log
             // console.log(++this.count);
-            // console.log(`i: ${curr.i}, j: ${curr.j}`);
+            console.log(`i: ${curr.i}, j: ${curr.j}`);
             for(var i = 0; i < curr.children.length; i++) {
                 if(curr.children[i] == curr.prev) continue;
                 curr.children[i].addPathLength(curr)
@@ -174,8 +176,10 @@ class Map {
     }
 
     setCost = (nodes) => {
+        // console.log(nodes);
         for(var k = 0; k < nodes.length; k++) {
-            this.grid[nodes[k].i][nodes[k].j].setCost(nodes[k].cost);
+            // console.log(nodes);
+            this.grid[nodes[k].i][nodes[k].j].setCost(nodes[k].value);
         }
     }
 

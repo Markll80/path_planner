@@ -46,7 +46,7 @@ class Server {
         });
         this.app.post('/api/costs/', (req, res) => {
             this.map.setCost(req.body);
-            res.send({express: 'cost changed'}).status(200);
+            res.send(req.body).status(200);
         })
         this.app.get('/api/paths', async (req, res) => {
             this.map.begin();

@@ -1,0 +1,23 @@
+.cell {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    background: lightgray;
+    border: 1px solid black;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: bottom;
+
+    &.path {
+        background: lightblue;
+    }
+
+    &.start {
+        background: coral;
+    }
+
+    &.goal {
+        background: lightgreen;
+    }
+}

@@ -12,7 +12,7 @@ Wall-E needs my help! He is trying to find his way to Eve. He knows his surround
 * run `npm install` in both `/server` and `/client` folders
 * run `npm start` in both `/server` and `/client` folders
 
-# List of features
+## List of features
 * Create map
 * Set new start point
 * Set new goal

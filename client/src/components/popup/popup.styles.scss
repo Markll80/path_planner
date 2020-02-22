@@ -11,9 +11,10 @@
 }
 
 .modal-content {
+    // align-content: right;
     position: absolute;
-    left: 25%;
-    right: 25%;
+    left: 35%;
+    right: 35%;
     top: 25%;
     bottom: 25%;
     // margin: auto;
@@ -21,3 +22,7 @@
     // z-index: -1;
     background: white;
 }
+
+// .title {
+//     text-align: left;
+// }

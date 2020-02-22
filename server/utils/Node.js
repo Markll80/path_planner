@@ -64,6 +64,7 @@ class Node {
 
     initPathLength = () => {
         this.pathLength = 0;
+        this.explored = true;
     }
 
     setPrev = (prev) => {

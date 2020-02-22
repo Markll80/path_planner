@@ -1,10 +1,10 @@
 import React from 'react';
 import './cell.styles.scss';
 
-const Cell = ({isStart, isGoal, value, inPath}) => {
+const Cell = ({isStart, isGoal, value, inPath, handleClick}) => {
     // console.log(value);
     return(
-        <span className={`${isStart ? 'start' : ''} 
+        <span onClick={handleClick} className={`${isStart ? 'start' : ''} 
                           ${isGoal ? 'goal' : ''} 
                           ${inPath ? 'path' : ''} 
                           ${value > 1 ? 'value' : ''} 

@@ -35,13 +35,24 @@ const Adapter = {
         const msg = await res.json();
         return msg;
     },
-    createCost: async (nodes) => {
+    createCost: async (input) => {
+        // console.log(input);
         const res = await fetch('/api/costs/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(nodes),
+            body: JSON.stringify({input: input}),
+        });
+        const msg = await res.json();
+        return msg;
+    },
+    resetCost: async () => {
+        const res = await fetch('/api/costs/reset', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         const msg = await res.json();
         return msg;
@@ -52,7 +63,8 @@ const Adapter = {
         });
         const msg = await res.json();
         return msg;
-    }
+    },
+
 };
 
 export default Adapter;

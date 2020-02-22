@@ -11,15 +11,8 @@ const Popup = ({changeMap, handleChange}) => {
                     <input name='inputHeight' type='number' onChange={handleChange} required /><br/>
                     <span className='title'>Width:</span><br/>
                     <input name='inputWidth' type='number' onChange={handleChange} required /><br/>
-                    {/* <br/>
-                    <input name='startI' type='number' onChange={handleChange} required />
-                    <input name='startJ' type='number' onChange={handleChange} required />
-                    <br/>
-                    <input name='goalI' type='number' onChange={handleChange} required />
-                    <input name='goalJ' type='number' onChange={handleChange} required /> */}
                 </form>
                 <button type='submit' onClick={changeMap}>SUBMIT</button>
-                {/* <p>POP!</p> */}
             </div>
         </div>
     );

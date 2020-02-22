@@ -4,10 +4,6 @@ import './board.styles.scss';
 import Cell from '../cell/cell.component';
 
 class Board extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     // Attach keyboard listener
     componentDidMount() {
         document.addEventListener('keydown', async (e) => {

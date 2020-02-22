@@ -2,7 +2,6 @@ import React from 'react';
 import './cell.styles.scss';
 
 const Cell = ({isStart, isGoal, value, inPath, handleClick}) => {
-    // console.log(value);
     return(
         <span onClick={handleClick} className={`${isStart ? 'start' : ''} 
                           ${isGoal ? 'goal' : ''} 

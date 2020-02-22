@@ -13,7 +13,6 @@ class Map {
         this.costs = [];
 
         this.grid = new Array(row);
-        console.log(this.grid.length);
         const grid = this.grid;
 
         // Create a 2d array and populate it with nodes, then link each other as children
@@ -47,8 +46,12 @@ class Map {
 
         while(curr !== goal) {
             for(var i = 0; i < curr.children.length; i++) {
+                // To ensure the path does not go back the way it came
                 if(curr.children[i] == curr.prev) continue;
-                 curr.children[i].addPathLength(curr)
+                // Add path length to the existing one, if the child is an obstacle, 
+                // the obstacle value will be added, otherwise 1 will be added
+                curr.children[i].addPathLength(curr)
+                // Heuristic calculation: Accumulated path length + distance from current position to the goal
                 curr.children[i].calculateValue(this.end[0], this.end[1]);
                 if(!curr.children[i].explored) this.pq.push(curr.children[i]);
                 curr.children[i].setExplored();
@@ -57,6 +60,7 @@ class Map {
         }
     }
 
+    // Backtrack from the goal to the starting point using prev
     getPath = () => {
         var curr = this.grid[this.end[0]][this.end[1]];
         this.path.unshift({i: curr.i, j: curr.j});
@@ -84,15 +88,6 @@ class Map {
         });
     }
 
-    resetCost = () => {
-        this.grid.forEach((col) => {
-            col.forEach((item) => {
-                item.cost = 1;
-            })
-        })
-    }
-
-    
 }
 
 export default Map;

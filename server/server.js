@@ -14,13 +14,12 @@ class Server {
     }
 
     route() {
+        // Handles request to change map
         this.app.post('/api/maps/', (req, res) => {
             const row = parseInt(req.body.row);
             const col = parseInt(req.body.col);
-            // const start = this.map.start;
-            // const goal = this.map.end;
-            console.log('reached');
             
+            // isNaN is used to handle empty input
             if(isNaN(row) || isNaN(col) || row <= 0 || col <= 0) {
                 res.send({msg: 'Invalid Input', status: 403}).status(403);
             }
@@ -28,12 +27,8 @@ class Server {
                 this.map = new Map(row, col);
                 this.map.setStart([0, 0]);
                 this.map.setEnd([row-1, col-1]);
-                // console.log(row);
-                // console.log(col);
                 this.map.begin();
                 const paths = this.map.getPath();
-                // const row = this.map.grid.length;
-                // const col = row == 0 ? 0 : this.map.grid[0].length
                 res.send({
                         mapWidth: col, 
                         mapHeight: row,
@@ -45,13 +40,14 @@ class Server {
                 }).status(201);
             }
         });
+
+        // Handles request to change starting location
         this.app.post('/api/paths/start/', (req, res) => {
             const row = this.map.grid.length;
             const col = this.map.grid[0].length;
             const start = [parseInt(req.body.i), parseInt(req.body.j)];
             const goal = this.map.end;
             const costs = this.map.costs;
-            console.log(start);
             if(
                 isNaN(start[0]) ||
                 isNaN(start[1]) ||
@@ -77,6 +73,8 @@ class Server {
                 }).status(201);
             }
         });
+
+        // Handles request to change Eve's location
         this.app.post('/api/paths/goal/', (req, res) => {
             const row = this.map.grid.length;
             const col = this.map.grid[0].length;
@@ -106,22 +104,18 @@ class Server {
                 status: 201
             }).status(201);
         });
+
+        // Handles request to add obstacles
         this.app.post('/api/costs/', (req, res) => {
             const row = this.map.grid.length;
             const col = this.map.grid[0].length;
             const start = this.map.start;
             const goal = this.map.end;
             const costs = this.map.costs;
-            // console.log(req.body);
             const JSONArray = req.body.input.split('|');
             JSONArray.forEach((item) => {
-                // console.log(item);
                 try {
-                    // console.log('in try');
                     const obj = JSON.parse(item);
-                    // const filteredCosts = costs.filter((costsItem, index) => {
-                    //     if(costsItem.i === obj.i)
-                    // })
                     obj.i = parseInt(obj.i);
                     obj.j = parseInt(obj.j);
                     obj.value = parseInt(obj.value);
@@ -149,7 +143,6 @@ class Server {
                     filteredCosts.length === 0 ? costs.push(obj) : null;
 
                 } catch(error) {
-                    // console.log('in catch');
                     console.error(error);
                     res.send({msg: 'Invalid Input', status: 403}).status(403);
                     return;
@@ -168,10 +161,8 @@ class Server {
                 status: 201
             }).status(201);
         })
-        this.app.post('/api/costs/reset', (req, res) => {
-            this.map.resetCost();
-            res.send({message: 'Success'}).status(200);
-        })
+
+        // Handles request to get shortest paths from starting location to the goal.
         this.app.get('/api/paths', async (req, res) => {
             this.map.begin();
             const paths = this.map.getPath();

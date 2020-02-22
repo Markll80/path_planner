@@ -1,5 +1,3 @@
-import { PORT } from '../constants/constants';
-
 const Adapter = {
     createMap: async (row, col) => {
         const res = await fetch('/api/maps/', {
@@ -10,7 +8,6 @@ const Adapter = {
             body: JSON.stringify({row: row, col: col})
         });
         const msg = await res.json();
-        // console.log(body);
         return msg;
     },
     createStart: async (i, j) => {
@@ -36,7 +33,6 @@ const Adapter = {
         return msg;
     },
     createCost: async (input) => {
-        // console.log(input);
         const res = await fetch('/api/costs/', {
             method: 'POST',
             headers: {

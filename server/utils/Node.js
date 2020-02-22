@@ -1,5 +1,4 @@
 class Node {
-    
     constructor(i, j) {
         this.i = i;
         this.j = j;
@@ -13,26 +12,15 @@ class Node {
 
     addChild = (child) => {
         this.children.push(child);
-        // console.log(`i: ${child.i}, j: ${child.j}`);
     }
-
-    // isChild = (node) => {
-    //     if(this.children.includes(node)) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
     setCost = (cost) => {
         this.cost = cost;
     }
 
+    // Pythagorean theorem
     calculateDistance = (endI, endJ) => {
-        // this.dist = (endI - this.i)^2 + (endJ - this.j)^2;
         this.dist = Math.sqrt(Math.pow(endI - this.i, 2) + Math.pow(endJ - this.j, 2));
-        // if(this.i == 1 && this.j == 0) {
-        //     console.log(`1: ${endI}, 2: ${endJ}`);
-        // }; 
         return this.dist;
     }
 
@@ -43,20 +31,13 @@ class Node {
     }
 
     calculateValue = (endI, endJ) => {
-        // this.value = this.cost + this.calculateDistance(endI, endJ);
-        // this.accum = this.value;
         this.value = this.pathLength + this.calculateDistance(endI, endJ);
         return this.value;
     }
 
     addPathLength = (parent) => {
-        // this.pathLength = this.cost + prevPathLength;
         const newPathLength = this.cost + parent.pathLength;
-        // newPathLength < this.pathLength ? this.pathLength = newPathLength : null;
-        // console.log(newPathLength);
         if(newPathLength < this.pathLength) {
-            // console.log('innewpathlenght');
-            // console.log('check');
             this.pathLength = newPathLength;
             this.prev = parent;
         }

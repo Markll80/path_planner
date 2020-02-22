@@ -18,3 +18,5 @@ Wall-E needs my help! He is trying to find his way to Eve. He knows his surround
 * Set new goal
 * Calculate and visualize path on map
 * Map keyboard and mouse support
+* Location tracking
+* General error handling

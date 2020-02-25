@@ -84,8 +84,17 @@ class Map {
     setCost = (nodes) => {
         nodes.forEach((item) => {
             this.grid[item.i][item.j].setCost(item.value);
-            this.costs.push(item);
+            var found = false;
+            this.costs.forEach((itemCosts) => {
+                if(itemCosts.i === item.i && itemCosts.j === item.j) {
+                    itemCosts.value = item.value;
+                    found = true;
+                }
+            });
+            // this.costs.push(item);
+            if(!found) this.costs.push(item);
         });
+
     }
 
 }

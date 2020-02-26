@@ -5,10 +5,7 @@ import { shallow } from 'enzyme';
 describe('Cell component', () => {
     it('Has cell in class name', () => {
         const wrapper = shallow(<Cell />);
-        // const countState = wrapper.state().count
-        // console.log(wrapper.find('.cell').length);
         expect(wrapper.find('.cell')).toHaveLength(1);
-        // console.log(expect(wrapper.find('.cell')));
     });
 
     it('Has start in class name', () => {

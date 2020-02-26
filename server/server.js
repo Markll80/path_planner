@@ -10,10 +10,12 @@ class Server {
         this.port = process.env.PORT || 5000;
         this.map;
 
-        this.app.listen(this.port, () => console.log(`**** Listening on http://localhost:${this.port}/`));
+        // this.app.listen(this.port, () => console.log(`**** Listening on http://localhost:${this.port}/`));
     }
 
     route() {
+        this.app.listen(this.port, () => console.log(`**** Listening on http://localhost:${this.port}/`));
+
         // Handles request to change map
         this.app.post('/api/maps/', (req, res) => {
             const row = parseInt(req.body.row);

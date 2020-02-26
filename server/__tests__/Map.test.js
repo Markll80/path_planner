@@ -1,7 +1,6 @@
 import Map from '../utils/Map';
 
 test('Should create new map', () => {
-    // expect(2).toBe(2)
     for(var i = 1; i < 20; i++) {
         for(var j = 1; j < 20; j++) {
             const map = new Map(i, j);

@@ -56,10 +56,12 @@ class Board extends React.Component {
 
             boardArray.forEach((item1, i) => {
                 item1.forEach((item2, j) => {
+                    // console.log(i*width+j);
+                    // console.log(`i: ${i}, height: ${height}, j: ${j}`);
                     if ((j + 1) % width === 0) boardJSX.push(
                         <span key={-i - 0.1}>
                             <Cell
-                                key={(i + 1) * height + j}
+                                key={i * width + j}
                                 isStart={item2.isStart}
                                 isGoal={item2.isGoal}
                                 value={item2.value}
@@ -71,7 +73,7 @@ class Board extends React.Component {
                     );
                     else boardJSX.push(
                         <Cell
-                            key={(i + 1) * height + j}
+                            key={i * width + j}
                             isStart={item2.isStart}
                             isGoal={item2.isGoal}
                             value={item2.value}

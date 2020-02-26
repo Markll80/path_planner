@@ -20,3 +20,4 @@ Wall-E needs my help! He is trying to find his way to Eve. He knows his surround
 * Map keyboard and mouse support
 * Location tracking
 * General error handling
+* PS: Since the obstacles have values assigned to them, Wall-e is designed to be able to go through obstacles
